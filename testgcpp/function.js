@@ -27,9 +27,9 @@ exports.handler = function (request, response) {
             console.log("errrrrrrrrrr");
         });
 
-//     response.send({ "message": "Successfully executed" });
-// }
-exports.handler = async(event)=>{
-    return{}
-
+    response.send({ "message": "Successfully executed" });
 }
+// exports.handler = async(event)=>{
+//     return{}
+
+// }
