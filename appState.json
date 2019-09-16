@@ -1,0 +1,121 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "43ae379d-af33-4a29-99ff-d70b2392e104": {
+        "id": "43ae379d-af33-4a29-99ff-d70b2392e104",
+        "parent": null,
+        "name": "testgcpp",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "474e2a3b-3457-4b39-a8f2-8fec08d95715",
+          "0d670400-1ac3-4dc8-9100-dcf560d34845"
+        ],
+        "isRemovable": false,
+        "filePath": "testgcpp"
+      },
+      "474e2a3b-3457-4b39-a8f2-8fec08d95715": {
+        "id": "474e2a3b-3457-4b39-a8f2-8fec08d95715",
+        "parent": "43ae379d-af33-4a29-99ff-d70b2392e104",
+        "name": "function.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "testgcpp/function.js",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst pubsub = google.pubsub('v1');\n\nexports.handler = function (request, response) {\n    pubsub.projects.topics.subscriptions.list({\n        topic: `projects/${process.env.GCP_PROJECT}/topics/cloud-builds`,\n        pageSize: 10\n    })\n        .then(response => {\n            console.log(response.data); \n             console.log(\"successs\");\n\n             // successful response\n            /*\n            response.data = {\n                \"subscriptions\": [\n                    \"projects/<project>/subscriptions/<subscription-1>\",\n                    \"projects/<project>/subscriptions/<subscription-2>\",\n                    ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n            console.log(\"errrrrrrrrrr\");\n        });\n\n//     response.send({ \"message\": \"Successfully executed\" });\n// }\nexports.handler = async(event)=>{\n    return{}\n\n}",
+        "config": {
+          "runtime": "nodejs8",
+          "timeout": 60,
+          "memory": 128,
+          "triggerType": 0,
+          "handler": "handler"
+        },
+        "triggers": []
+      },
+      "af6e8411-7ec3-4b99-8dde-a52f595c675f": {
+        "id": "af6e8411-7ec3-4b99-8dde-a52f595c675f",
+        "parent": null,
+        "name": "index.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": false,
+        "filePath": "index.js",
+        "code": "// This file is used to register all your cloud functions in GCP.\n// DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\nexports.testgcppfunction = require(\"./testgcpp/function.js\").handler;"
+      },
+      "14680f42-33ed-405a-bf0b-cd1af99a582d": {
+        "id": "14680f42-33ed-405a-bf0b-cd1af99a582d",
+        "parent": null,
+        "name": "main.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": false,
+        "filePath": "main.py",
+        "code": "# This file is used to register all your cloud functions in GCP.\n# DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\n"
+      },
+      "0d670400-1ac3-4dc8-9100-dcf560d34845": {
+        "id": "0d670400-1ac3-4dc8-9100-dcf560d34845",
+        "parent": "43ae379d-af33-4a29-99ff-d70b2392e104",
+        "name": "Authorizer.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "testgcpp/Authorizer.js",
+        "code": "const google = require(\"googleapis\").google;\n\ngoogle.options({auth: new google.auth.Compute()});"
+      }
+    },
+    "rootNode": "43ae379d-af33-4a29-99ff-d70b2392e104",
+    "openFiles": [
+      "474e2a3b-3457-4b39-a8f2-8fec08d95715"
+    ],
+    "currentFileId": "474e2a3b-3457-4b39-a8f2-8fec08d95715",
+    "resources": {
+      "pubsubcloudBuilds": {
+        "name": "pubsubcloudBuilds",
+        "type": "pubsub",
+        "config": {
+          "mode": 1,
+          "topic": {
+            "name": "cloud-builds",
+            "subscriptions": []
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [],
+    "packageJSON": {
+      "dependencies": {
+        "googleapis": {
+          "name": "googleapis",
+          "language": "javascript",
+          "version": "29.0.0",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "testgcpp",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east1",
+    "platform": "GCP",
+    "platformRegions": {},
+    "lastSave": 1568627719900
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "testgcpp",
+      "url": "https://github.com/Indunil1992/testgcpp"
+    }
+  }
+}
